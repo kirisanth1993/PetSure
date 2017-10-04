@@ -35,7 +35,7 @@
     </div>
 
     <div class="col-md-2 ">
-      <select class="form-control input-group input-group-lg" id="status" [(ngModel)]="selectedValue" name="status" placeholder="Status" style="height:45px; line-height:45px; font:serif; font-size:18px; " id="status">
+      <select class="form-control input-group input-group-lg" id="status" [(ngModel)]="currentStatus" name="status" placeholder="Status" style="height:45px; line-height:45px; font:serif; font-size:18px; " id="status">
         <option *ngFor="let sts of status">{{sts}}</option>
       </select>
     </div>

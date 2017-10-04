@@ -8,15 +8,4 @@
 export class AppComponent {
   title = 'PetSure';
 
-  data={};
-  searchPet(){
-    console.log(this.data);
-  }
-  //status = ["Any status", "Beginning", "Not paid", "Paid", "claimed", "Expired"];
-  //selectedValue = "Any status";
-}
-
-export class Search{
-  status = ["Any status", "Beginning", "Not paid", "Paid", "claimed", "Expired"];
-  selectedValue = "Any status";
 }
