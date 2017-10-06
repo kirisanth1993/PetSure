@@ -1,5 +1,5 @@
 <hr>
-<div class="row">
+<div class="row" *ngIf=details>
   <div class="col-md-10 col-md-offset-1">
     <h2>Policy details</h2>
     <div style="height: 375px; overflow: auto">
@@ -20,198 +20,45 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
+          <tr *ngFor="let policy of details;">
+            <td>{{policy.policyNumber}}</td>
+            <td>{{policy.policyHolder}}</td>
+            <td>{{policy.petName}}</td>
+            <td>{{policy.vetPractice}}</td>
+            <td>{{policy.amount}}</td>
+            <td>{{policy.microChip}}</td>
+            <td>{{policy.vetHubRef}}</td>
+            <td>{{policy.claimRef}}</td>
+            <td>{{policy.claim}}</td>
+            <td>{{policy.dateSubmittedFrom}}</td>
           </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
-          <tr>
-            <td>123</td>
-            <td>Kirisanth</td>
-            <td>Lucky</td>
-            <td>2 times</td>
-            <td>$ 2500</td>
-            <td>Provided</td>
-            <td>VH 45895</td>
-            <td>CR 785</td>
-            <td>C1423</td>
-            <td>04.10.2017</td>
-          </tr>
+
 
         </tbody>
       </table>
     </div>
   </div>
-</div>
 
-<nav aria-label="...">
-  <div class="col-md-offset-1">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active">
-        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">4</a></li>
-      <li class="page-item"><a class="page-link" href="#">5</a></li>
-      <li class="page-item"><a class="page-link" href="#">6</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+
+  <nav aria-label="...">
+    <div class="col-md-offset-1">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active">
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">6</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+</div>
