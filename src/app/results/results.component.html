@@ -1,6 +1,13 @@
 <hr>
-<div class="row" *ngIf=details>
-  <div class="col-md-10 col-md-offset-1">
+
+
+<div class="row" *ngIf="details">
+  <div class="col-md-offset-1" *ngIf="!details.length">
+    <h1 style="color:red;">No Results Found !</h1>
+    <h3>Please, Provide the correct key details.</h3>
+  </div>
+
+  <div class="col-md-10 col-md-offset-1" *ngIf="details.length">
     <h2>Policy details</h2>
     <div style="height: 375px; overflow: auto">
       <table class="table" >
@@ -38,27 +45,24 @@
       </table>
     </div>
   </div>
-
-
-  <nav aria-label="...">
-    <div class="col-md-offset-1">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active">
-          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item"><a class="page-link" href="#">6</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
+  <br>
 </div>
+
+<nav aria-label="..." class="row" *ngIf="details">
+  <div class ="col-md-offset-1" *ngIf="details.length" >
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active">
+        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </div>
+</nav>

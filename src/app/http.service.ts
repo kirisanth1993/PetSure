@@ -11,17 +11,50 @@ export class HttpService{
 
 
   loaddata(data): Observable<any> {
-    let params = new URLSearchParams()
-    params.append('policyNumber', data.policyNumber);
-    params.append('policyHolder', data.policyHolder);
-    params.append('petName', data.petName);
-    params.append('vetPractice', data.vetPractice);
-    params.append('status', data.currentStatus);
-    params.append('vetHubRef', data.vetHubRef);
-    params.append('claimRef', data.claimRef);
-    params.append('claim', data.claim);
-    params.append('dateSubmittedFrom', data.submittedDateFrom);
-    params.append('dateSubmittedTo', data.submittedDateTo);
+    let params = new URLSearchParams();
+
+    if (data.policyNumber){
+      params.append('policyNumber', data.policyNumber);
+    };
+
+    if (data.policyHolder){
+      params.append('policyHolder', data.policyHolder);
+    };
+
+    if (data.petName){
+      params.append('petName', data.petName);
+    };
+
+    if (data.vetPractice){
+      params.append('vetPractice', data.vetPractice);
+    };
+
+    if (data.currentStatus){
+      if (data.currentStatus!='Any status'){
+        params.append('status', data.currentStatus);
+      }
+    };
+
+    if (data.vetHubRef){
+      params.append('vetHubRef', data.vetHubRef);
+    };
+
+    if (data.claimRef){
+      params.append('claimRef', data.claimRef);
+    };
+
+    if (data.claim){
+      params.append('claim', data.claim);
+    };
+
+    if (data.submittedDateFrom){
+      params.append('dateSubmittedFrom', data.submittedDateFrom);
+    };
+
+    if (data.submittedDateTo){
+      params.append('dateSubmittedTo', data.submittedDateTo);
+    };
+
 
     return this.http.get(this.server_url, {
       params: params

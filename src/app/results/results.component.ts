@@ -8,6 +8,7 @@ import { SearchComponent } from '../search/search.component';
 })
 export class ResultsComponent implements OnInit {
   @Input() details;
+
   constructor() { }
 
   ngOnInit() {
