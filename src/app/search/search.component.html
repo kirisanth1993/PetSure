@@ -108,7 +108,7 @@
 
     <div class="col-md-1" style="text-align:right">
       <div class="input-group input-group-lg">
-        <button type="button" class="btn btn-primary form-control">Clear</button>
+        <button type="reset" class="btn btn-primary form-control">Clear</button>
       </div>
     </div>
 
@@ -116,15 +116,10 @@
 
 </form>
 
-<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
-        <div class="modal-header">
-            <h1>Processing...</h1>
-        </div>
-        <div class="modal-body">
-            <div class="progress progress-striped active">
-                <div class="bar" style="width: 100%;"></div>
-            </div>
-        </div>
-    </div>
+<div *ngIf="loading" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-header">
+    <h1>Processing...</h1>
+  </div>
+</div>
 
 <app-results [details]="policyDetails"></app-results>

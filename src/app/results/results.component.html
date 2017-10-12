@@ -1,46 +1,27 @@
-<hr>
-
-
 <div class="row" *ngIf="details">
   <div class="col-md-offset-1" *ngIf="!details.length">
+    <hr>
     <h1 style="color:red;">No Results Found !</h1>
     <h3>Please, Provide the correct key details.</h3>
   </div>
 
   <div class="col-md-10 col-md-offset-1" *ngIf="details.length">
+    <hr>
     <h2>Policy details</h2>
     <div style="height: 375px; overflow: auto">
       <table class="table" >
         <thead>
           <tr>
-            <th>Policy no</th>
-            <th>Policy holder</th>
-            <th>Pet name</th>
-            <th>Vet practice</th>
-            <th>Amount</th>
-            <th>Microchip</th>
-            <th>VetHub ref#</th>
-            <th>Claim ref#</th>
-            <th>Claim#</th>
-            <th>Date submitted</th>
+            <th *ngFor="let content of contentDetails">
+              <a (click)="sortContent(columnsNames[content])">{{columnsNames[content]}}</a>
+            </th>
           </tr>
         </thead>
 
         <tbody>
           <tr *ngFor="let policy of details;">
-            <td>{{policy.policyNumber}}</td>
-            <td>{{policy.policyHolder}}</td>
-            <td>{{policy.petName}}</td>
-            <td>{{policy.vetPractice}}</td>
-            <td>{{policy.amount}}</td>
-            <td>{{policy.microChip}}</td>
-            <td>{{policy.vetHubRef}}</td>
-            <td>{{policy.claimRef}}</td>
-            <td>{{policy.claim}}</td>
-            <td>{{policy.dateSubmittedFrom}}</td>
+            <td *ngFor="let content of contentDetails">{{policy[content]}}</td>
           </tr>
-
-
         </tbody>
       </table>
     </div>

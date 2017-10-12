@@ -17,15 +17,16 @@ export class SearchComponent implements OnInit {
   claim;
   submittedDateFrom;
   submittedDateTo;
-
   policyDetails;
+
+  loading = false;
 
   status = ["Any status", "Beginning", "Not paid", "Paid", "claimed", "Expired"];
   currentStatus = "Any status";
 
   searchPet(){
     //console.log(this.submittedDateFrom);
-
+    this.loading = true;
     this.httpService.loaddata({
       policyNumber:this.policyNumber,
       policyHolder:this.policyHolder,
@@ -41,6 +42,7 @@ export class SearchComponent implements OnInit {
       console.log(data);
       this.policyDetails = data.json();
 
+      this.loading = false;
     });
   }
 
@@ -50,5 +52,20 @@ export class SearchComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+      this.httpService.loaddata({
+      policyNumber:this.policyNumber,
+      policyHolder:this.policyHolder,
+      vetPractice:this.vetPractice,
+      petName:this.petName,
+      currentStatus:this.currentStatus,
+      vetHubRef:this.vetHubRef,
+      claimRef:this.claimRef,
+      claim:this.claim,
+      submittedDateFrom:this.submittedDateFrom,
+      submittedDateTo:this.submittedDateTo
+    }).subscribe(data => {
+      this.policyDetails = data.json();
+
+    });
   }
 }
