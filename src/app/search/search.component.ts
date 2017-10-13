@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
   currentStatus = "Any status";
 
   searchPet(){
-    //console.log(this.submittedDateFrom);
+    console.log(this.submittedDateFrom);
     this.loading = true;
     this.httpService.loaddata({
       policyNumber:this.policyNumber,
@@ -36,8 +36,8 @@ export class SearchComponent implements OnInit {
       vetHubRef:this.vetHubRef,
       claimRef:this.claimRef,
       claim:this.claim,
-      submittedDateFrom:this.submittedDateFrom,
-      submittedDateTo:this.submittedDateTo
+      dateSubmittedFrom:this.submittedDateFrom,
+      dateSubmittedTo:this.submittedDateTo
     }).subscribe(data => {
       console.log(data);
       this.policyDetails = data.json();

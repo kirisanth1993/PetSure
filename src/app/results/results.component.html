@@ -13,7 +13,7 @@
         <thead>
           <tr>
             <th *ngFor="let content of contentDetails">
-              <a (click)="sortContent(columnsNames[content])">{{columnsNames[content]}}</a>
+              <a (click)="sortContent(content)">{{columnsNames[content]}}</a>
             </th>
           </tr>
         </thead>
@@ -29,7 +29,13 @@
   <br>
 </div>
 
-<nav aria-label="..." class="row" *ngIf="details">
+<div>
+  <!-- <p *ngFor="let policy of details;">{{policy["resultNumbers"]}}</p> -->
+  <p>{{calculatePageNav()}}</p>
+</div>
+
+
+<!-- <nav aria-label="..." class="row" *ngIf="details">
   <div class ="col-md-offset-1" *ngIf="details.length" >
     <ul class="pagination">
       <li class="page-item">
@@ -40,10 +46,24 @@
         <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
       </li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class=""><a class="" href="#">.</a></li>
+      <li class="page-item"><a class="page-link" href="#">.</a></li>
+      <li class="page-item"><a class="page-link" href="#">.</a></li>
+      <li class="page-item"><a class="page-link" href="#">.</a></li>
+      <li class="page-item"><a class="page-link" href="#">.</a></li>
       <li class="page-item"><a class="page-link" href="#">4</a></li>
       <li class="page-item">
         <a class="page-link" href="#">Next</a>
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+<nav aria-label="..." class="row" *ngIf="details">
+    <div class ="col-md-offset-1" *ngIf="details.length" >
+      <ul class="pagination" *ngFor="let num of pageDetailArray">
+        <li class="page-item" *ngIf = "currentPage!=num"><a class="page-link" href="#">{{num}}</a></li>
+        <li class="page-item active" *ngIf = "currentPage==num"><a class="page-link" href="#">{{num}}</a></li>
+      </ul>
+    </div>
+  </nav>
