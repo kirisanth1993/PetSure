@@ -18,7 +18,8 @@ export class SearchComponent implements OnInit {
   submittedDateFrom;
   submittedDateTo;
   policyDetails;
-
+  startIndex;
+  endIndex;
   loading = false;
 
   status = ["Any status", "Beginning", "Not paid", "Paid", "claimed", "Expired"];
@@ -37,7 +38,9 @@ export class SearchComponent implements OnInit {
       claimRef:this.claimRef,
       claim:this.claim,
       dateSubmittedFrom:this.submittedDateFrom,
-      dateSubmittedTo:this.submittedDateTo
+      dateSubmittedTo:this.submittedDateTo,
+      startIndex:"0",
+      endIndex:10
     }).subscribe(data => {
       console.log(data);
       this.policyDetails = data.json();
@@ -53,19 +56,11 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
       this.httpService.loaddata({
-      policyNumber:this.policyNumber,
-      policyHolder:this.policyHolder,
-      vetPractice:this.vetPractice,
-      petName:this.petName,
-      currentStatus:this.currentStatus,
-      vetHubRef:this.vetHubRef,
-      claimRef:this.claimRef,
-      claim:this.claim,
-      submittedDateFrom:this.submittedDateFrom,
-      submittedDateTo:this.submittedDateTo
+        startIndex:"0",
+        endIndex:10 
     }).subscribe(data => {
       this.policyDetails = data.json();
-
+      
     });
   }
 }

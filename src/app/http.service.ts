@@ -5,14 +5,14 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 
 @Injectable()
 export class HttpService{
-  private server_url: string = "http://localhost:8000/policies"; //Url which handles JSON encoded data
+  private server_url: string = "http://192.168.200.128:46808/api/vethubclaims"; //Url which handles JSON encoded data
 
   constructor(private http: Http) {} //Injecting the Http Service
 
 
   loaddata(data): Observable<any> {
     let params = new URLSearchParams();
-    let paramsArray = ["policyNumber", "policyHolder", "petName", "vetPractice", "vetHubRef", "claimRef", "claim", "dateSubmittedFrom", "dateSubmittedTo"];
+    let paramsArray = ["policyNumber", "policyHolder", "petName", "vetPractice", "vetHubRef", "claimRef", "claim", "dateSubmittedFrom", "dateSubmittedTo","startIndex","endIndex"];
     for (let param of paramsArray){
       if(data[param]){
         params.append(param, data[param]);
