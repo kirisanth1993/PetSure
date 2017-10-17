@@ -1,14 +1,14 @@
 <div class="row" *ngIf="details">
-  <div class="col-md-offset-1" *ngIf="!details.length">
+  <div class="col-md-offset-1" *ngIf="!(details.length)">
     <hr>
     <h1 style="color:red;">No Results Found !</h1>
     <h3>Please, Provide the correct key details.</h3>
   </div>
-
+  
   <div class="col-md-10 col-md-offset-1" *ngIf="details.length">
     <hr>
     <h2>Policy details</h2>
-    <div style="height: 375px; overflow: auto">
+    <div>
       <table class="table" >
         <thead>
           <tr>
@@ -32,35 +32,11 @@
   <br>
 </div>
 
-<!-- <nav aria-label="..." class="row" *ngIf="details">
-  <div class ="col-md-offset-1" *ngIf="details.length" >
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active">
-        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class=""><a class="" href="#">.</a></li>
-      <li class="page-item"><a class="page-link" href="#">.</a></li>
-      <li class="page-item"><a class="page-link" href="#">.</a></li>
-      <li class="page-item"><a class="page-link" href="#">.</a></li>
-      <li class="page-item"><a class="page-link" href="#">.</a></li>
-      <li class="page-item"><a class="page-link" href="#">4</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </div>
-</nav> -->
-
 <nav aria-label="..." class="row" *ngIf="details">
     <div class ="col-md-offset-1" *ngIf="details.length" >
       <ul class="pagination" *ngFor="let num of pageDetailArray">
-        <li class="page-item" (click) = "calculatePageNav(num)" *ngIf = "currentPage!=num"><a class="page-link" href="#">{{num}}</a></li>
-        <li class="page-item active" (click) = "calculatePageNav(num)" *ngIf = "currentPage==num"><a class="page-link" href="#">{{num}}</a></li>
+        <li class="page-item" (click) = "calculatePageNav(num)" *ngIf = "currentPage!=num"><a class="page-link">{{num}}</a></li>
+        <li class="page-item active" (click) = "calculatePageNav(num)" *ngIf = "currentPage==num"><a class="page-link">{{num}}</a></li>
       </ul>
     </div>
   </nav>

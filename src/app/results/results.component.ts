@@ -52,6 +52,7 @@ export class ResultsComponent implements OnInit{
   ngOnChanges() {
     setTimeout(() => {
       if (this.details!=undefined && this.details[0].TotalCount!=undefined){
+        this.pageIndex = this.details[0].RowNum;
         if (this.details[0].TotalCount%10!=0){
           this.pageNo = Math.floor(this.details[0].TotalCount/10)+1;
         }
@@ -63,7 +64,7 @@ export class ResultsComponent implements OnInit{
       if (this.details!=undefined && this.details[0].TotalCount!=undefined){
         if (this.pageNo==1){
           this.pageDetailArray = [];
-          this.pageDetailArray.push(1);
+          
         }
         else if(this.pageNo==2){
           this.pageDetailArray = [];
@@ -131,7 +132,7 @@ export class ResultsComponent implements OnInit{
       this.pageDetailArray = ["Previous",pageVal-1,pageVal,pageVal+1,pageVal+2,"...",this.pageNo-1,this.pageNo,"Next"];
       //}
     }
-          
+    this.sortContent(null,null);       
   }
 
   constructor(private httpService: HttpService) { }
@@ -139,10 +140,10 @@ export class ResultsComponent implements OnInit{
    }
 
   sortContent(column, order) {
-    //console.log(column,order);
     this.update.emit({
       columnName: column,
-      orderName : order
+      orderName : order,
+      pageNum:this.currentPage
     });
     
 

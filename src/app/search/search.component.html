@@ -116,10 +116,16 @@
 
 </form>
 
-<div *ngIf="loading" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+<div *ngIf="loading&&!errorStatus" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-header">
     <h1>Processing...</h1>
   </div>
 </div>
 
-<app-results [details]="policyDetails" (update)= "receiveSortDetails($event)"></app-results>
+<div class="col-md-offset-1" *ngIf="errorStatus">
+  <hr>
+  <h1 style="color:red;">Internet Connection Error !</h1>
+  <h3>Please, Check it.</h3>
+</div>
+
+<app-results [details]="policyDetails" (update)= "receiveSortDetails($event)" *ngIf="!loading"></app-results>

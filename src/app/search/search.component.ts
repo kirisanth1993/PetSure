@@ -22,6 +22,7 @@ export class SearchComponent implements OnInit {
   endIndex;
   sort;
   loading = false;
+  errorStatus;
 
   status = ["Any status", "Beginning", "Not paid", "Paid", "claimed", "Expired"];
   currentStatus = "Any status";
@@ -44,6 +45,9 @@ export class SearchComponent implements OnInit {
     }).subscribe(data => {
       this.policyDetails = data.json();
       this.loading = false;
+    },
+    error => {
+      this.errorStatus=true;
     });
   }
   constructor(private httpService: HttpService) { }
@@ -61,12 +65,15 @@ export class SearchComponent implements OnInit {
       claim:this.claim,
       dateSubmittedFrom:this.submittedDateFrom,
       dateSubmittedTo:this.submittedDateTo,
-      startIndex:"0",
-      endIndex:10,
+      startIndex:String((para.pageNum-1)*10),
+      endIndex:para.pageNum*10,
       sort:para.columnName+" "+para.orderName
     }).subscribe(data => {
       this.policyDetails = data.json();
       this.loading = false;
+    },
+    error => {
+      this.errorStatus=true;
     });
 
   }
@@ -77,7 +84,9 @@ export class SearchComponent implements OnInit {
         endIndex:10 
     }).subscribe(data => {
       this.policyDetails = data.json();
-      
+    },
+    error => {
+      this.errorStatus=true;
     });
   }
 }
