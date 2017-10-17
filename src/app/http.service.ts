@@ -12,7 +12,7 @@ export class HttpService{
 
   loaddata(data): Observable<any> {
     let params = new URLSearchParams();
-    let paramsArray = ["policyNumber", "policyHolder", "petName", "vetPractice", "vetHubRef", "claimRef", "claim", "dateSubmittedFrom", "dateSubmittedTo","startIndex","endIndex"];
+    let paramsArray = ["policyNumber", "policyHolder", "petName", "vetPractice", "vetHubRef", "claimRef", "claim", "dateSubmittedFrom", "dateSubmittedTo", "startIndex", "endIndex","sort"];
     for (let param of paramsArray){
       if(data[param]){
         params.append(param, data[param]);

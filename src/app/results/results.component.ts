@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 import { HttpService } from '../http.service';
-
+import { Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-results',
@@ -10,8 +10,11 @@ import { HttpService } from '../http.service';
 })
 export class ResultsComponent implements OnInit{
   @Input() details;
+  @Output() update = new EventEmitter<any>();
 
-  //policyDetails;
+  asc = "asc";
+  desc = "desc";
+  
 
   columnsNames = { 
     policyNumber: "Policy no", 
@@ -93,12 +96,23 @@ export class ResultsComponent implements OnInit{
   }
   tempArray;
   calculatePageNav(pageVal){
+    if ((pageVal=="Previous")&&(this.currentPage-1>0)){
+      pageVal = this.currentPage-1;
+    }
+    if ((pageVal=="Next")&&(this.currentPage+1<=this.pageNo)){
+      pageVal = this.currentPage+1;
+    }
+    
+    // if ((pageVal==this.pageNo-1)&&(this.pageDetailArray.includes("..."))&&(this.pageDetailArray[4]!=this.pageNo-1)&&(this.pageDetailArray[4]!=this.pageNo-2)){
+    //   this.pageDetailArray = [this.pageDetailArray[0],this.pageDetailArray[1],this.pageDetailArray[2],this.pageDetailArray[3],"...",this.pageNo-2,this.pageNo-1,this.pageNo,"Next"];
+    // }
+
     if ((pageVal!="Previous")&&(pageVal!="Next")&&(pageVal!="...")){
       this.currentPage = pageVal;
     }
-    
+        
     if ((this.pageDetailArray.length>3) && (pageVal!="Previous")&&(pageVal!="Next")&&(pageVal!="...")&&(pageVal!="this.pageNo-1")&&(pageVal!= this.pageNo)){
-      if (this.pageDetailArray[5] == "..." &&this.pageDetailArray.indexOf(pageVal)==4){
+      if (this.pageDetailArray[5] == "..." &&this.pageDetailArray.indexOf(pageVal)==4&&(this.pageDetailArray[4]<this.pageNo-3)){
         if((pageVal+1!=this.pageNo) && (pageVal+1 != this.pageNo-1)&&(pageVal+2!=this.pageNo) && (pageVal+2 != this.pageNo-1))
 
           this.tempArray=["Previous",pageVal-1,pageVal,pageVal+1,pageVal+2,"...",this.pageNo-1,this.pageNo,"Next"];
@@ -110,22 +124,28 @@ export class ResultsComponent implements OnInit{
             this.pageDetailArray= ["Previous",pageVal-1,pageVal,pageVal+1,pageVal+2,"...",this.pageNo-1,this.pageNo,"Next"];
           }
       }
-    } 
-    
-    
-    
+    }
+
+    if((this.pageDetailArray.length>3)&&(this.pageDetailArray.indexOf(pageVal)==1)&&(pageVal>1)){
+      //if (this.pageDetailArray.includes("...")){
+      this.pageDetailArray = ["Previous",pageVal-1,pageVal,pageVal+1,pageVal+2,"...",this.pageNo-1,this.pageNo,"Next"];
+      //}
+    }
+          
   }
 
   constructor(private httpService: HttpService) { }
-  
-  
-
   ngOnInit() {
- 
-  }
+   }
 
-  sortContent(column) {
-    console.log(column)
+  sortContent(column, order) {
+    //console.log(column,order);
+    this.update.emit({
+      columnName: column,
+      orderName : order
+    });
+    
+
     // this.httpService.loaddata({
     //   sort:column + " " +"asc",
       

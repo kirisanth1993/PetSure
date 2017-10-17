@@ -122,4 +122,4 @@
   </div>
 </div>
 
-<app-results [details]="policyDetails"></app-results>
+<app-results [details]="policyDetails" (update)= "receiveSortDetails($event)"></app-results>

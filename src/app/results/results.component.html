@@ -14,8 +14,8 @@
           <tr>
             <th *ngFor="let content of contentDetails">
               <a>{{columnsNames[content]}}</a>
-              <a class="glyphicon glyphicon-chevron-up" (click)="sortContent(content)"></a>
-              <a class="glyphicon glyphicon-chevron-down" (click)="sortContent(content)"></a>
+              <a class="glyphicon glyphicon-chevron-up" (click)="sortContent(content, asc)"></a>
+              <a class="glyphicon glyphicon-chevron-down" (click)="sortContent(content, desc)"></a>
               
             </th>
           </tr>
