@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
   currentStatus = "Any status";
 
   searchPet(){
+    console.log(this.submittedDateFrom);
     this.loading = true;
     this.httpService.loaddata({
       policyNumber:this.policyNumber,
@@ -79,6 +80,19 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+      // this.submittedDateFrom = new Date();
+      // var dd = this.submittedDateFrom.getDate();
+      // var mm = this.submittedDateFrom.getMonth()+1;
+      // var yyyy = this.submittedDateFrom.getFullYear();
+      // if(dd<10){
+      //   dd = '0'+ dd;
+      // }
+      // if(mm<10){
+      //   mm = '0'+ mm;
+      // }
+      // let today = yyyy + '/' + mm + '/' + dd;
+      // this.submittedDateFrom = today;
+
       this.httpService.loaddata({
         startIndex:"0",
         endIndex:10 

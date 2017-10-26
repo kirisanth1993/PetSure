@@ -146,15 +146,6 @@ export class ResultsComponent implements OnInit{
       pageNum:this.currentPage
     });
     
-
-    // this.httpService.loaddata({
-    //   sort:column + " " +"asc",
-      
-    // }).subscribe(data => {
-    //   console.log(data);
-    //   this.policyDetails = data.json();
-      
-    // });
   }
 
 }
