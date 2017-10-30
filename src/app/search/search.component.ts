@@ -27,80 +27,80 @@ export class SearchComponent implements OnInit {
   status = ["Any status", "Beginning", "Not paid", "Paid", "claimed", "Expired"];
   currentStatus = "Any status";
 
-  searchPet(){
+  searchPet() {
     console.log(this.submittedDateFrom);
     this.loading = true;
     this.httpService.loaddata({
-      policyNumber:this.policyNumber,
-      policyHolder:this.policyHolder,
-      vetPractice:this.vetPractice,
-      petName:this.petName,
-      currentStatus:this.currentStatus,
-      vetHubRef:this.vetHubRef,
-      claimRef:this.claimRef,
-      claim:this.claim,
-      dateSubmittedFrom:this.submittedDateFrom,
-      dateSubmittedTo:this.submittedDateTo,
-      startIndex:"0",
-      endIndex:10
+      policyNumber: this.policyNumber,
+      policyHolder: this.policyHolder,
+      vetPractice: this.vetPractice,
+      petName: this.petName,
+      currentStatus: this.currentStatus,
+      vetHubRef: this.vetHubRef,
+      claimRef: this.claimRef,
+      claim: this.claim,
+      dateSubmittedFrom: this.submittedDateFrom,
+      dateSubmittedTo: this.submittedDateTo,
+      startIndex: "0",
+      endIndex: 10
     }).subscribe(data => {
       this.policyDetails = data.json();
       this.loading = false;
     },
-    error => {
-      this.errorStatus=true;
-    });
+      error => {
+        this.errorStatus = true;
+      });
   }
   constructor(private httpService: HttpService) { }
 
-  receiveSortDetails(para){
+  receiveSortDetails(para) {
     this.loading = true;
     this.httpService.loaddata({
-      policyNumber:this.policyNumber,
-      policyHolder:this.policyHolder,
-      vetPractice:this.vetPractice,
-      petName:this.petName,
-      currentStatus:this.currentStatus,
-      vetHubRef:this.vetHubRef,
-      claimRef:this.claimRef,
-      claim:this.claim,
-      dateSubmittedFrom:this.submittedDateFrom,
-      dateSubmittedTo:this.submittedDateTo,
-      startIndex:String((para.pageNum-1)*10),
-      endIndex:para.pageNum*10,
-      sort:para.columnName+" "+para.orderName
+      policyNumber: this.policyNumber,
+      policyHolder: this.policyHolder,
+      vetPractice: this.vetPractice,
+      petName: this.petName,
+      currentStatus: this.currentStatus,
+      vetHubRef: this.vetHubRef,
+      claimRef: this.claimRef,
+      claim: this.claim,
+      dateSubmittedFrom: this.submittedDateFrom,
+      dateSubmittedTo: this.submittedDateTo,
+      startIndex: String((para.pageNum - 1) * 10),
+      endIndex: para.pageNum * 10,
+      sort: para.columnName + " " + para.orderName
     }).subscribe(data => {
       this.policyDetails = data.json();
       this.loading = false;
     },
-    error => {
-      this.errorStatus=true;
-    });
+      error => {
+        this.errorStatus = true;
+      });
 
   }
 
   ngOnInit() {
-      // this.submittedDateFrom = new Date();
-      // var dd = this.submittedDateFrom.getDate();
-      // var mm = this.submittedDateFrom.getMonth()+1;
-      // var yyyy = this.submittedDateFrom.getFullYear();
-      // if(dd<10){
-      //   dd = '0'+ dd;
-      // }
-      // if(mm<10){
-      //   mm = '0'+ mm;
-      // }
-      // let today = yyyy + '/' + mm + '/' + dd;
-      // this.submittedDateFrom = today;
+    // this.submittedDateFrom = new Date();
+    // var dd = this.submittedDateFrom.getDate();
+    // var mm = this.submittedDateFrom.getMonth()+1;
+    // var yyyy = this.submittedDateFrom.getFullYear();
+    // if(dd<10){
+    //   dd = '0'+ dd;
+    // }
+    // if(mm<10){
+    //   mm = '0'+ mm;
+    // }
+    // let today = yyyy + '/' + mm + '/' + dd;
+    // this.submittedDateFrom = today;
 
-      this.httpService.loaddata({
-        startIndex:"0",
-        endIndex:10 
+    this.httpService.loaddata({
+      startIndex: "0",
+      endIndex: 10
     }).subscribe(data => {
       this.policyDetails = data.json();
     },
-    error => {
-      this.errorStatus=true;
-    });
+      error => {
+        this.errorStatus = true;
+      });
   }
 }

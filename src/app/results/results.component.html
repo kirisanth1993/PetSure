@@ -4,26 +4,30 @@
     <h1 style="color:red;">No Results Found !</h1>
     <h3>Please, Provide the correct key details.</h3>
   </div>
-  
+
   <div class="col-md-10 col-md-offset-1" *ngIf="details.length">
     <hr>
     <h2>Policy details</h2>
     <div>
-      <table class="table" >
+      <table class="table">
         <thead>
           <tr>
             <th *ngFor="let content of contentDetails">
               <a>{{columnsNames[content]}}</a>
               <a class="glyphicon glyphicon-chevron-up" (click)="sortContent(content, asc)"></a>
               <a class="glyphicon glyphicon-chevron-down" (click)="sortContent(content, desc)"></a>
-              
+
             </th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let policy of details;">
-            <td *ngFor="let content of contentDetails">{{policy[content]}}</td>
+          <tr *ngFor="let policy of details">
+            <td *ngFor="let content of contentDetails">
+              <a class="nav-link" routerLink="/claimsManagement/{{policy.policyNumber}}" routerLinkActive="active">
+                {{policy[content]}}
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -33,10 +37,14 @@
 </div>
 
 <nav aria-label="..." class="row" *ngIf="details">
-    <div class ="col-md-offset-1" *ngIf="details.length" >
-      <ul class="pagination" *ngFor="let num of pageDetailArray">
-        <li class="page-item" (click) = "calculatePageNav(num)" *ngIf = "currentPage!=num"><a class="page-link">{{num}}</a></li>
-        <li class="page-item active" (click) = "calculatePageNav(num)" *ngIf = "currentPage==num"><a class="page-link">{{num}}</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="col-md-offset-1" *ngIf="details.length">
+    <ul class="pagination" *ngFor="let num of pageDetailArray">
+      <li class="page-item" (click)="calculatePageNav(num)" *ngIf="currentPage!=num">
+        <a class="page-link">{{num}}</a>
+      </li>
+      <li class="page-item active" (click)="calculatePageNav(num)" *ngIf="currentPage==num">
+        <a class="page-link">{{num}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>

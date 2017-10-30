@@ -4,35 +4,38 @@ import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 
 @Injectable()
-export class HttpService{
-  private server_url: string = "http://192.168.200.128:46808/api/vethubclaims"; //Url which handles JSON encoded data
+export class HttpService {
+  // private server_url: string = "http://192.168.200.128:46808/api/vethubclaims"; //Url which handles JSON encoded data
+  private server_url: string = "http://localhost:8000/policies"; //Url which handles JSON encoded data
+  private server_url_claim: string = "http://localhost:8000/claimdetails"; //Url which handles JSON encoded data
+  // private server_url: string = "http://localhost:46808/api/vethubclaims"; //Url which handles JSON encoded data
 
-  constructor(private http: Http) {} //Injecting the Http Service
+  constructor(private http: Http) { } //Injecting the Http Service
 
 
   loaddata(data): Observable<any> {
     let params = new URLSearchParams();
     let paramsArray = [
-      "policyNumber", 
-      "policyHolder", 
-      "petName", 
-      "vetPractice", 
-      "vetHubRef", 
-      "claimRef", 
-      "claim", 
-      "dateSubmittedFrom", 
-      "dateSubmittedTo", 
-      "startIndex", 
+      "policyNumber",
+      "policyHolder",
+      "petName",
+      "vetPractice",
+      "vetHubRef",
+      "claimRef",
+      "claim",
+      "dateSubmittedFrom",
+      "dateSubmittedTo",
+      "startIndex",
       "endIndex",
       "sort"
     ];
-    for (let param of paramsArray){
-      if(data[param]){
+    for (let param of paramsArray) {
+      if (data[param]) {
         params.append(param, data[param]);
       }
     }
-    if (data.currentStatus){
-      if (data.currentStatus!='Any status'){
+    if (data.currentStatus) {
+      if (data.currentStatus != 'Any status') {
         params.append('status', data.currentStatus);
       }
     };
@@ -40,5 +43,19 @@ export class HttpService{
       params: params
     });
   }
+
+  loadclaimdata(data): Observable<any> {
+    let params = new URLSearchParams();
+    let paramsArray = [
+      "policyNumber"
+    ];
+    for (let param of paramsArray) {
+      params.append(param, data[param]);
+    }
+    return this.http.get(this.server_url_claim, {
+      params: params
+    });
+  }
+
 
 }

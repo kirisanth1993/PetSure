@@ -1,20 +1,22 @@
 <div class="col-md-offset-1">
-    <h2> VetHub Claims</h2>
+  <h2> VetHub Claims</h2>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light col-md-offset-1">
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto nav-pills">
-        <li class="nav-item col-md-4">
-          <a class="nav-link" routerLink="claimDetails" routerLinkActive="active" style="color:blue">Claim Details <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item col-md-4 col-md-offset-1">
-          <a class="nav-link" routerLink="attachments" routerLinkActive="active" style="color:blue">Attachments</a>
-        </li>
-        <li class="nav-item col-md-5 col-md-offset-1">
-            <a class="nav-link" routerLink="status" routerLinkActive="active" style="color:blue">status&Activity Log</a>
-          </li>
-      </ul>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg col-md-offset-1">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto nav-pills">
+      <li class="nav-item col-md-4">
+        <a class="nav-link" routerLink="claimDetails" routerLinkActive="active">Claim Details
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item col-md-4 col-md-offset-1">
+        <a class="nav-link" routerLink="attachments" routerLinkActive="active">Attachments</a>
+      </li>
+      <li class="nav-item col-md-5 col-md-offset-1">
+        <a class="nav-link" routerLink="status" routerLinkActive="active">status&Activity Log</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>

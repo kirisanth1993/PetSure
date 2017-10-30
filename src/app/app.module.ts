@@ -16,16 +16,20 @@ import { StatusComponent } from './status/status.component';
 
 
 const appRoutes: Routes = [
+  { path: 'home', component: SearchComponent },
+  { path: '', component: SearchComponent },
   { path: 'dashboard', component: SearchComponent },
-  { path: 'claimsManagement', component: ClaimsManagementComponent },
+  // { path: 'claimsManagement', component: ClaimsManagementComponent },
   { path: 'dashboard', component: SearchComponent },
-  { path: 'claimsManagement', component: ClaimsManagementComponent, 
+  {
+    path: 'claimsManagement/:id', component: ClaimsManagementComponent,
     children: [
       { path: 'claimDetails', component: ClaimsDetailsComponent },
       { path: 'attachments', component: AttachmentsComponent },
       { path: 'status', component: StatusComponent },
-    
-            
+      { path: '', component: ClaimsDetailsComponent },
+
+
     ],
   }
 ];
@@ -41,16 +45,16 @@ const appRoutes: Routes = [
     StatusComponent
   ],
   imports: [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-      JsonpModule,
-      RouterModule.forRoot(
-        appRoutes,
-        { enableTracing: true } // <-- debugging purposes only
-      )
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: false } // <-- debugging purposes only
+    )
   ],
-  providers:[ HttpService ],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

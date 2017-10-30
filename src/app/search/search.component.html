@@ -10,33 +10,38 @@
     <div class="col-md-2 col-md-offset-1">
       <div class="form-group input-group input-group-lg ">
         <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-        <input type="text" id="policyNumber" [(ngModel)]="policyNumber" class="form-control" name="policyNumber" placeholder="Policy number" aria-label="Policynumber" aria-describedby="sizing-addon1">
+        <input type="text" id="policyNumber" [(ngModel)]="policyNumber" class="form-control" name="policyNumber" placeholder="Policy number"
+          aria-label="Policynumber" aria-describedby="sizing-addon1">
       </div>
     </div>
 
     <div class="col-md-2">
       <div class="form-group input-group input-group-lg ">
         <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-        <input type="text" id="policyHolder" [(ngModel)]="policyHolder" name="policyHolder" class="form-control" placeholder="Policy holder" aria-label="Policyholder" aria-describedby="sizing-addon1">
+        <input type="text" id="policyHolder" [(ngModel)]="policyHolder" name="policyHolder" class="form-control" placeholder="Policy holder"
+          aria-label="Policyholder" aria-describedby="sizing-addon1">
       </div>
     </div>
 
     <div class="col-md-2">
       <div class="form-group input-group input-group-lg ">
         <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-        <input type="text" id="vetPractice" [(ngModel)]="vetPractice" name="vetPractice" class="form-control" placeholder="Vet practice" aria-label="Vetpractice" aria-describedby="sizing-addon1">
+        <input type="text" id="vetPractice" [(ngModel)]="vetPractice" name="vetPractice" class="form-control" placeholder="Vet practice"
+          aria-label="Vetpractice" aria-describedby="sizing-addon1">
       </div>
     </div>
 
     <div class="col-md-2">
       <div class="form-group input-group input-group-lg ">
         <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-        <input type="text" id="petName" [(ngModel)]="petName" name="petName" class="form-control" placeholder="Pet name" aria-label="Petname" aria-describedby="sizing-addon1">
+        <input type="text" id="petName" [(ngModel)]="petName" name="petName" class="form-control" placeholder="Pet name" aria-label="Petname"
+          aria-describedby="sizing-addon1">
       </div>
     </div>
 
     <div class="col-md-2 ">
-      <select class="form-control input-group input-group-lg" id="status" [(ngModel)]="currentStatus" name="status" placeholder="Status" style="height:45px; line-height:45px; font:serif; font-size:18px; " id="status">
+      <select class="form-control input-group input-group-lg" id="status" [(ngModel)]="currentStatus" name="status" placeholder="Status"
+        style="height:45px; line-height:45px; font:serif; font-size:18px; " id="status">
         <option *ngFor="let sts of status">{{sts}}</option>
       </select>
     </div>
@@ -48,21 +53,24 @@
     <div class="col-md-2 col-md-offset-1">
       <div class="form-group input-group input-group-lg ">
         <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-        <input type="text" id="vetHubRef" [(ngModel)]="vetHubRef" name="vetHubRef" class="form-control" placeholder="VetHub Ref#" aria-label="vethubref" aria-describedby="sizing-addon1">
+        <input type="text" id="vetHubRef" [(ngModel)]="vetHubRef" name="vetHubRef" class="form-control" placeholder="VetHub Ref#"
+          aria-label="vethubref" aria-describedby="sizing-addon1">
       </div>
     </div>
 
     <div class="col-md-2">
       <div class="form-group input-group input-group-lg ">
         <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-        <input type="text" id="claimRef" [(ngModel)]="claimRef" name="claimRef" class="form-control" placeholder="Claim Ref#" aria-label="Claimref" aria-describedby="sizing-addon1">
+        <input type="text" id="claimRef" [(ngModel)]="claimRef" name="claimRef" class="form-control" placeholder="Claim Ref#" aria-label="Claimref"
+          aria-describedby="sizing-addon1">
       </div>
     </div>
 
     <div class="col-md-2">
       <div class="form-group input-group input-group-lg ">
         <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-        <input type="text" id="claim" [(ngModel)]="claim" name="claim" class="form-control" placeholder="Claim#" aria-label="Claim" aria-describedby="sizing-addon1">
+        <input type="text" id="claim" [(ngModel)]="claim" name="claim" class="form-control" placeholder="Claim#" aria-label="Claim"
+          aria-describedby="sizing-addon1">
       </div>
     </div>
 
@@ -129,4 +137,4 @@
   <h3>Please, Check it.</h3>
 </div>
 
-<app-results [details]="policyDetails" (update)= "receiveSortDetails($event)" *ngIf="!loading"></app-results>
+<app-results [details]="policyDetails" (update)="receiveSortDetails($event)" *ngIf="!loading"></app-results>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-status',
   templateUrl: './status.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.activatedRoute.snapshot.params)
+    this.activatedRoute.parent.params.subscribe((params: Params) => {
+      let PolicyNo = params['id'];
+      console.log(params['id']);
+    });
   }
 
 }

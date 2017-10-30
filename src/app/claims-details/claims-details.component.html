@@ -1,5 +1,6 @@
 <div class="row col-md-offset-1">
   <div class="col-md-4">
+    <!-- {{funct()}} -->
     <table class="table" border="1">
       <thead class="thead-inverse">
         <tr align="right">
@@ -7,37 +8,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>Policy no</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Policy holder</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Insurer</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Address</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Suburb</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Postcode</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>State</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Phone</th>
-          <th>...........</th>
+        <tr *ngFor="let HolderContent of policyHolderContent">
+          <th>{{policyHolderRowNames[HolderContent]}}</th>
+          <th>{{claimsDetails[HolderContent]}}</th>
         </tr>
       </tbody>
     </table>
@@ -50,41 +23,9 @@
         </tr>
       </thead>
       <tbody height="200px">
-        <tr>
-          <th>Pet Name</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Microchip</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Breed</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Amount</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Vet Hub Reference no</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>claim Reference no</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>claim no</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>status</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>status</th>
-          <th>...........</th>
+        <tr *ngFor="let claimContent of claimDetailsContent">
+          <th>{{claimDetailsRowNames[claimContent]}}</th>
+          <th *ngIf="claimsDetails[claimContent]">{{claimsDetails[claimContent]}}</th>
         </tr>
       </tbody>
     </table>
@@ -99,41 +40,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>Vet Practice</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Submitted by</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Address</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>subrub</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Postcode</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>State</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Phone</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <th>...........</th>
-        </tr>
-        <tr>
-          <th>VPMS & Version</th>
-          <th>...........</th>
+        <tr *ngFor="let vetContent of vetPractice">
+          <th>{{vetPracticeRowNames[vetContent]}}</th>
+          <th>{{claimsDetails[vetContent]}}</th>
         </tr>
       </tbody>
     </table>
