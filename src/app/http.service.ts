@@ -8,7 +8,6 @@ export class HttpService {
   // private server_url: string = "http://192.168.200.128:46808/api/vethubclaims"; //Url which handles JSON encoded data
   private server_url: string = "http://localhost:8000/policies"; //Url which handles JSON encoded data
   private server_url_claim: string = "http://localhost:8000/claimdetails"; //Url which handles JSON encoded data
-  // private server_url: string = "http://localhost:46808/api/vethubclaims"; //Url which handles JSON encoded data
 
   constructor(private http: Http) { } //Injecting the Http Service
 
@@ -44,18 +43,29 @@ export class HttpService {
     });
   }
 
-  loadclaimdata(data): Observable<any> {
+  loadclaimData(claimsData): Observable<any> {
     let params = new URLSearchParams();
-    let paramsArray = [
-      "policyNumber"
+    let claimsParamsArray = [
+      "policyNumber",
+      "info"
     ];
-    for (let param of paramsArray) {
-      params.append(param, data[param]);
+    for (let param of claimsParamsArray) {
+      params.append(param, claimsData[param]);
     }
     return this.http.get(this.server_url_claim, {
       params: params
     });
   }
-
-
+  loadAttachmentData(attachmentData): Observable<any> {
+    let params = new URLSearchParams();
+    let attachmentParamsArray = [
+      "policyNumber"
+    ];
+    for (let param of attachmentParamsArray) {
+      params.append(param, attachmentData[param]);
+    }
+    return this.http.get(this.server_url, {
+      params: params
+    });
+  }
 }

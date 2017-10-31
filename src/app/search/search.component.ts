@@ -28,7 +28,6 @@ export class SearchComponent implements OnInit {
   currentStatus = "Any status";
 
   searchPet() {
-    console.log(this.submittedDateFrom);
     this.loading = true;
     this.httpService.loaddata({
       policyNumber: this.policyNumber,

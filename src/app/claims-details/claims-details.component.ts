@@ -9,6 +9,7 @@ import { HttpService } from '../http.service';
 })
 export class ClaimsDetailsComponent implements OnInit {
   policyNum;
+  info;
   detailType = "claimDetails";
   loading = false;
   errorStatus;
@@ -86,9 +87,10 @@ export class ClaimsDetailsComponent implements OnInit {
     this.activatedRoute.parent.params.subscribe((params: Params) => {
       this.policyNum = params['id'];
     });
-
-    this.httpService.loadclaimdata({
-      policyNumber: this.policyNum
+    this.loading = true;
+    this.httpService.loadclaimData({
+      policyNumber: this.policyNum,
+      info:"claimsDetails"
     }).subscribe(data => {
       this.claimsDetails = data.json()[0];
       this.loading = false;
