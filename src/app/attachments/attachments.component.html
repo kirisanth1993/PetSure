@@ -1,28 +1,27 @@
 <div class="row col-md-offset-1">
   <div class="col-md-10">
-    <table class="table" border="1">
+    <table *ngFor = "let singleAttach of attachList" class="table" border="1">
       <thead class="thead-inverse">
+        <!-- Columns names -->
         <tr>
-          <th style="text-align: center; vertical-align: middle;">Attachment ID </th>
-          <th style="text-align: center; vertical-align: middle;">Submitted date & time</th>
-          <th style="text-align: center; vertical-align: middle;">Attachment status</th>
-          <th style="text-align: center; vertical-align: middle;">Attachment</th>
+          <th class = "col-md-3" style="text-align: center; vertical-align: middle;">Attachment ID </th>
+          <th class = "col-md-3" style="text-align: center; vertical-align: middle;">Submitted date & time</th>
+          <th class = "col-md-3" style="text-align: center; vertical-align: middle;">Attachment status</th>
+          <th class = "col-md-3" style="text-align: center; vertical-align: middle;">Attachment</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>...........</th>
-          <th>...........</th>
-          <th>...........</th>
-          <th>...........</th>
+        <!-- content -->
+        <tr *ngFor = "let rowDetail of singleAttach">
+          <th class = "col-md-3">{{rowDetail["attachmentId"]}}</th>
+          <th class = "col-md-3">{{rowDetail["attachmentSubmittedDate"]}}</th>
+          <th class = "col-md-3">{{rowDetail["attachmentStatus"]}}</th>
+          <th class = "col-md-3"><a>{{rowDetail["attachmentUrl"]}}</a></th>
         </tr>
-        <tr>
-          <th>...........</th>
-          <th>...........</th>
-          <th>...........</th>
-          <th>...........</th>
-        </tr>
+        
       </tbody>
     </table>
+    <br>
+    <br>
   </div>
 </div>

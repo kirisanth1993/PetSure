@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpService } from '../http.service';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-attachments',
@@ -9,9 +10,10 @@ import { HttpService } from '../http.service';
 })
 export class AttachmentsComponent implements OnInit {
   policyNum;
-  attachmentDetails ={};
+  attachmentDetails = [];
   loading;
   errorStatus;
+  attachList; 
   constructor(private activatedRoute: ActivatedRoute, private httpService: HttpService) { }
 
   ngOnInit() {
@@ -20,10 +22,12 @@ export class AttachmentsComponent implements OnInit {
     });
     this.loading = true;
     this.httpService.loadAttachmentData({
-      policyNumber: this.policyNum
+      policyNum: this.policyNum,
+      info: "attachments" 
     }).subscribe(data => {
-      this.attachmentDetails = data.json()[0];
-      console.log(this.attachmentDetails);
+      this.attachmentDetails = data.json();
+      let attachObj = _.groupBy(this.attachmentDetails, function(a) { return a.attachmentId });
+      this.attachList = Object.values(attachObj);
       this.loading = false;
     },
       error => {

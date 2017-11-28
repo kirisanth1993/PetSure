@@ -5,9 +5,10 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 
 @Injectable()
 export class HttpService {
-  // private server_url: string = "http://192.168.200.128:46808/api/vethubclaims"; //Url which handles JSON encoded data
-  private server_url: string = "http://localhost:8000/policies"; //Url which handles JSON encoded data
-  private server_url_claim: string = "http://localhost:8000/claimdetails"; //Url which handles JSON encoded data
+  private server_url: string = "http://192.168.200.128:46808/api/vethubclaims"; //Url which handles JSON encoded data
+  private server_url_claim: string = "http://192.168.200.128:46808/api/vethubclaims"; //Url which handles JSON encoded data
+  // private server_url: string = "http://localhost:8000/policies"; //Url which handles JSON encoded data
+  // private server_url_claim: string = "http://localhost:8000/claimdetails"; //Url which handles JSON encoded data
 
   constructor(private http: Http) { } //Injecting the Http Service
 
@@ -46,7 +47,7 @@ export class HttpService {
   loadclaimData(claimsData): Observable<any> {
     let params = new URLSearchParams();
     let claimsParamsArray = [
-      "policyNumber",
+      "policyNum",
       "info"
     ];
     for (let param of claimsParamsArray) {
@@ -59,7 +60,8 @@ export class HttpService {
   loadAttachmentData(attachmentData): Observable<any> {
     let params = new URLSearchParams();
     let attachmentParamsArray = [
-      "policyNumber"
+      "policyNum",
+      "info"
     ];
     for (let param of attachmentParamsArray) {
       params.append(param, attachmentData[param]);

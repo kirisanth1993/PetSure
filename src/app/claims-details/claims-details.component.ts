@@ -13,7 +13,7 @@ export class ClaimsDetailsComponent implements OnInit {
   detailType = "claimDetails";
   loading = false;
   errorStatus;
-  claimsDetails = [];
+  claimsDetails = {};
   constructor(private activatedRoute: ActivatedRoute, private httpService: HttpService) { }
 
   policyHolderContent = [
@@ -62,7 +62,7 @@ export class ClaimsDetailsComponent implements OnInit {
   };
   vetPractice = [
     "vetPractice",
-    "submittedby",
+    "submittedBy",
     "vAddress",
     "vSubrub",
     "vPostcode",
@@ -73,7 +73,7 @@ export class ClaimsDetailsComponent implements OnInit {
   ];
   vetPracticeRowNames = {
     "vetPractice": "Vet Practice",
-    "submittedby": "Submitted by",
+    "submittedBy": "Submitted by",
     "vAddress": "Address",
     "vSubrub": "subrub",
     "vPostcode": "Postcode",
@@ -89,8 +89,8 @@ export class ClaimsDetailsComponent implements OnInit {
     });
     this.loading = true;
     this.httpService.loadclaimData({
-      policyNumber: this.policyNum,
-      info:"claimsDetails"
+      policyNum: this.policyNum,
+      info:"claimdetails"
     }).subscribe(data => {
       this.claimsDetails = data.json()[0];
       this.loading = false;
